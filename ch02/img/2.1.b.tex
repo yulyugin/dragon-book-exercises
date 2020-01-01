@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+
+\begin{tikzpicture}
+    \node (S0) at (0, 0) {S};
+
+    \node (S1) at (-2, -1) {S};
+    \draw (S0) -- (S1);
+    \node (S2) at (0, -1) {S};
+    \draw (S0) -- (S2);
+    \node (mul) at (2, -1) {*};
+    \draw (S0) -- (mul);
+
+    \node (S11) at (-3, -2) {S};
+    \draw (S1) -- (S11);
+    \node (S12) at (-2, -2) {S};
+    \draw (S1) -- (S12);
+    \node (plus) at (-1, -2) {+};
+    \draw (S1) -- (plus);
+
+    \node (a3) at (0, -2) {a};
+    \draw (S2) -- (a3);
+
+    \node (a1) at (-3, -3) {a};
+    \draw (S11) -- (a1);
+    \node (a2) at (-2, -3) {a};
+    \draw (S12) -- (a2);
+\end{tikzpicture}
+
+\end{document}

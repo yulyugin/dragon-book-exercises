@@ -1,0 +1,48 @@
+\documentclass[varwidth=true]{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \node (S0) at (0, 0) {S};
+
+    \node (S1) at (-1, -1) {S};
+    \draw (S0) -- (S1);
+    \node (S2) at (1, -1) {S};
+    \draw (S0) -- (S2);
+
+    \node (S10) at (-2, -2) {S};
+    \draw (S1) -- (S10);
+    \node (S11) at (0, -2) {S};
+    \draw (S1) -- (S11);
+
+     \node (a0) at (1, -2) {a};
+     \draw (S2) -- (a0);
+
+     \node (a1) at (-2, -3) {a};
+     \draw (S10) -- (a1);
+     \node (a2) at (0, -3) {a};
+     \draw (S11) -- (a2);
+\end{tikzpicture}
+\newline
+\newline
+\begin{tikzpicture}
+    \node (S0) at (0, 0) {S};
+
+    \node (S1) at (-1, -1) {S};
+    \draw (S0) -- (S1);
+    \node (S2) at (1, -1) {S};
+    \draw (S0) -- (S2);
+
+    \node (a0) at (-1, -2) {a};
+    \draw (S1) -- (a0);
+
+    \node (S10) at (0, -2) {S};
+    \draw (S2) -- (S10);
+    \node (S11) at (2, -2) {S};
+    \draw (S2) -- (S11);
+
+     \node (a1) at (0, -3) {a};
+     \draw (S10) -- (a1);
+     \node (a2) at (2, -3) {a};
+     \draw (S11) -- (a2);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[varwidth=true]{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=0.7]
+  \node (p5) at (5, 0) {\{print('5')\}};
+  \node (5) at (7, 0) {5};
+  \node (p2) at (9, 0) {\{print('2')\}};
+  \node (2) at (11, 0) {2};
+
+  \node (p9) at (0, 2) {\{print('9')\}};
+  \node (9) at (2, 2) {9};
+  \node (pob) at (4, 2) {\{print('(')\}};
+  \node (e5) at (6, 2) {expr};
+  \node (p*) at (8, 2) {\{print(')*(')\}};
+  \node (e2) at (10, 2) {expr};
+  \node (pcb) at (12, 2) {\{print(')')\}};
+  \node (*) at (14, 2) {*};
+
+  \draw[dashed] (p5) -- (e5);
+  \draw (5) -- (e5);
+  \draw[dashed] (p2) -- (e2);
+  \draw (2) -- (e2);
+
+  \node (e9) at (1, 4) {expr};
+  \node (p-) at (4, 4) {\{print(-)\}};
+  \node (e*) at (7, 4) {expr};
+  \node (-) at (10, 4) {-};
+
+  \draw[dashed] (p9) -- (e9);
+  \draw (9) -- (e9);
+  \draw[dashed] (pob) -- (e*);
+  \draw (e5) -- (e*);
+  \draw[dashed] (p*) -- (e*);
+  \draw (e2) -- (e*);
+  \draw[dashed] (pcb) -- (e*);
+  \draw (*) -- (e*);
+
+  \node (e) at (5, 6) {expr};
+
+  \draw (e9) -- (e);
+  \draw[dashed] (p-) -- (e);
+  \draw (e*) -- (e);
+  \draw (-) -- (e);
+\end{tikzpicture}
+\end{document}

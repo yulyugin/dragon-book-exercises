@@ -2,46 +2,40 @@
 \usepackage{tikz}
 \begin{document}
 \begin{tikzpicture}
-  \node (p5) at (4, 0) {\{print('5')\}};
-  \node (5) at (6, 0) {5};
+  \node (e) at (0, 0) {expr.t = -9*52};
 
-  \node (p9) at (0, 1) {\{print('9')\}};
-  \node (9) at (2, 1) {9};
-  \node (f5) at (5, 1) {factor};
-  \node (p2) at (7, 1) {\{print('2')\}};
-  \node (2) at (9, 1) {2};
+  \node (e9) at (-4, -1) {expr.t = 9};
+  \node (-) at (0, -1) {-};
+  \node (t52) at (4, -1) {term.t = *52};
+  \draw (e) -- (e9);
+  \draw (e) -- (-);
+  \draw (e) -- (t52);
 
-  \draw[dashed] (p5) -- (f5);
-  \draw (5) -- (f5);
+  \node (t9) at (-4, -2) {term.t = 9};
+  \draw (e9) -- (t9);
 
-  \node (f9) at (1, 2) {factor};
-  \node (p*) at (3, 2) {\{print('*')\}};
-  \node (t5) at (5, 2) {term};
-  \node (*) at (7, 2) {*};
-  \node (f2) at (8, 2) {factor};
+  \node (t5) at (2, -2) {term.t = 5};
+  \draw (t52) -- (t5);
 
-  \draw[dashed] (p9) -- (f9);
-  \draw (9) -- (f9);
-  \draw (f5) -- (t5);
-  \draw[dashed] (p2) -- (f2);
-  \draw (2) -- (f2);
+  \node (*) at (4, -2) {*};
+  \draw (t52) -- (*);
 
-  \node (p-) at (-1, 3) {\{print('-')\}};
-  \node (e9) at (1, 3) {expr};
-  \node (-) at (3, 3) {-};
-  \node (t*) at (6, 3) {term};
+  \node (f2) at (6, -2) {factor.t = 2};
+  \draw (t52) -- (f2);
 
-  \draw (f9) -- (e9);
-  \draw[dashed] (p*) -- (t*);
-  \draw (t5) -- (t*);
-  \draw (*) -- (t*);
-  \draw (f2) -- (t*);
+  \node (f9) at (-4, -3) {factor.t = 9};
+  \draw (t9) -- (f9);
 
-  \node (e) at (2.5, 4) {expr};
+  \node (f5) at (2, -3) {factor.t = 5};
+  \draw (t5) -- (f5);
 
-  \draw[dashed] (p-) -- (e);
-  \draw (e9) -- (e);
-  \draw (-) -- (e);
-  \draw (t*) -- (e);
+  \node (2) at (6, -3) {2};
+  \draw (f2) -- (2);
+
+  \node (9) at (-4, -4) {9};
+  \draw (f9) -- (9);
+
+  \node (5) at (2, -4) {5};
+  \draw (f5) -- (5);
 \end{tikzpicture}
 \end{document}

@@ -2,48 +2,41 @@
 \usepackage{tikz}
 \begin{document}
 \begin{tikzpicture}
-  \node (p9) at (0, 0) {\{print('9')\}};
-  \node (9) at (2, 0) {9};
-  \node (p5) at (4, 0) {\{print('5')\}};
-  \node (5) at (6, 0) {5};
+  \node (e) at (0, 0) {expr.t = +-952};
 
-  \node (f9) at (1, 1) {factor};
-  \node (f5) at (5, 1) {factor};
-  \node (p2) at (7, 1) {\{print('2')\}};
-  \node (2) at (9, 1) {2};
+  \node (e95) at (-4, -1) {expr.t = -95};
+  \node (e+) at (0, -1) {+};
+  \node (t2) at (4, -1) {term.t = 2};
+  \draw (e) -- (e95);
+  \draw (e) -- (e+);
+  \draw (e) -- (t2);
 
-  \draw[dashed] (p9) -- (f9);
-  \draw (9) -- (f9);
-  \draw[dashed] (p5) -- (f5);
-  \draw (5) -- (f5);
+  \node (e9) at (-6, -2) {expr.t = 9};
+  \node (e-) at (-4, -2) {-};
+  \node (t5) at (-2, -2) {term.t = 5};
+  \draw (e95) -- (e9);
+  \draw (e95) -- (e-);
+  \draw (e95) -- (t5);
 
-  \node (p-) at (-1, 2) {\{print('-')\}};
-  \node (e9) at (1, 2) {expr};
-  \node (-) at (3, 2) {-};
-  \node (t5) at (5, 2) {term};
-  \node (f2) at (8, 2) {factor};
+  \node (f2) at (4, -2) {factor.t = 2};
+  \draw (t2) -- (f2);
 
-  \draw (f9) -- (e9);
-  \draw (f5) -- (t5);
-  \draw[dashed] (p2) -- (f2);
-  \draw (2) -- (f2);
+  \node (t9) at (-6, -3) {term.t = 9};
+  \draw (e9) -- (t9);
 
-  \node (p+) at (0, 3) {\{print('+')\}};
-  \node (e-) at (3, 3) {expr};
-  \node (+) at (5.5, 3) {+};
-  \node (t2) at (8, 3) {term};
+  \node (f5) at (-2, -3) {factor.t = 5};
+  \draw (t5) -- (f5);
 
-  \draw[dashed] (p-) -- (e-);
-  \draw (e9) -- (e-);
-  \draw (-) -- (e-);
-  \draw (t5) -- (e-);
-  \draw (f2) -- (t2);
+  \node (2) at (4, -3) {2};
+  \draw (f2) -- (2);
 
-  \node (e) at (5.5, 4) {expr};
+  \node (f9) at (-6, -4) {factor.t = 9};
+  \draw (t9) -- (f9);
 
-  \draw[dashed] (p+) -- (e);
-  \draw (e-) -- (e);
-  \draw (+) -- (e);
-  \draw (t2) -- (e);
+  \node (5) at (-2, -4) {5};
+  \draw (f5) -- (5);
+
+  \node (9) at (-6, -5) {9};
+  \draw (f9) -- (9);
 \end{tikzpicture}
 \end{document}

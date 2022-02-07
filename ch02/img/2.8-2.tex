@@ -2,44 +2,29 @@
 \usepackage{tikz}
 \begin{document}
 \begin{tikzpicture}[scale=0.7]
-  \node (p5) at (5, 0) {\{print('5')\}};
-  \node (5) at (7, 0) {5};
-  \node (p2) at (9, 0) {\{print('2')\}};
-  \node (2) at (11, 0) {2};
+  \node (e) at (0, 0) {expr.t = (9-5*2)};
 
-  \node (p9) at (0, 2) {\{print('9')\}};
-  \node (9) at (2, 2) {9};
-  \node (pob) at (4, 2) {\{print('(')\}};
-  \node (e5) at (6, 2) {expr};
-  \node (p*) at (8, 2) {\{print(')*(')\}};
-  \node (e2) at (10, 2) {expr};
-  \node (pcb) at (12, 2) {\{print(')')\}};
-  \node (*) at (14, 2) {*};
+  \node (e9) at (-5, -1) {expr.t = 9};
+  \node (e52) at (0, -1) {expr.t = 5*2};
+  \node (-) at (4, -1) {-};
+  \draw (e) -- (e9);
+  \draw (e) -- (e52);
+  \draw (e) -- (-);
 
-  \draw[dashed] (p5) -- (e5);
-  \draw (5) -- (e5);
-  \draw[dashed] (p2) -- (e2);
-  \draw (2) -- (e2);
+  \node (9) at (-5, -2) {9};
+  \draw (e9) -- (9);
 
-  \node (e9) at (1, 4) {expr};
-  \node (p-) at (4, 4) {\{print(-)\}};
-  \node (e*) at (7, 4) {expr};
-  \node (-) at (10, 4) {-};
+  \node (e5) at (-3, -2) {expr.t = 5};
+  \node (e2) at (0, -2) {expr.t = 2};
+  \node (*) at (3, -2) {*};
+  \draw (e52) -- (e5);
+  \draw (e52) -- (e2);
+  \draw (e52) -- (*);
 
-  \draw[dashed] (p9) -- (e9);
-  \draw (9) -- (e9);
-  \draw[dashed] (pob) -- (e*);
-  \draw (e5) -- (e*);
-  \draw[dashed] (p*) -- (e*);
-  \draw (e2) -- (e*);
-  \draw[dashed] (pcb) -- (e*);
-  \draw (*) -- (e*);
+  \node (5) at (-3, -3) {5};
+  \draw (e5) -- (5);
 
-  \node (e) at (5, 6) {expr};
-
-  \draw (e9) -- (e);
-  \draw[dashed] (p-) -- (e);
-  \draw (e*) -- (e);
-  \draw (-) -- (e);
+  \node (2) at (0, -3) {2};
+  \draw (e2) -- (2);
 \end{tikzpicture}
 \end{document}

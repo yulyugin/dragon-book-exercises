@@ -22,11 +22,11 @@ factor -> ( expr )
 
 Annotated parse tree for `9-5+2`
 
-![2.7](./img/2.7.png)
+![2.7](./img/2.3.1.png)
 
 Annotated parse tree for `9-5*2`
 
-![2.7-mul](./img/2.7-mul.png)
+![2.7-mul](./img/2.3.1-mul.png)
 
 ## Exercise 2.3.2
 Construct a syntax-directed translation scheme that translates
@@ -46,11 +46,11 @@ expr -> 9 {print('9')}
 
 Annotated parse tree for `95-2*`
 
-![2.8](./img/2.8.png)
+![2.8](./img/2.3.2.png)
 
 Annotated parse tree for `952*-`
 
-![2.8-2](./img/2.8-2.png)
+![2.8-2](./img/2.3.2-2.png)
 
 ## Exercise 2.3.3
 Construct a syntax-directed translation scheme that translates integers into

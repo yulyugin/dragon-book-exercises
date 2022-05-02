@@ -129,3 +129,19 @@ thousands -> MM {tmp += 2000}
 thousands -> MMM {tmp += 3000}
 romans -> thousands all_hundreds all_tens all_ones {print(tmp)}
 ```
+
+## Exercise 2.3.5
+Construct a syntax-directed translation scheme to translate
+postfix arithmetic expressions into equivalent prefix arithmetic
+expressions.
+
+```
+expr -> {print('*')} expr expr *
+expr -> {print{'/')} expr expr /
+expr -> {print('+')} expr expr +
+expr -> {print('-')} expr expr -
+expr -> 0 {print('0')}
+expr -> 1 {print('1')}
+...
+expr -> 9 {print('9')}
+```

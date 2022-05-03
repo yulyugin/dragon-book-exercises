@@ -16,3 +16,7 @@ include(GoogleTest)
 add_executable(p2_1 ch02/P2.1/p2_1.cpp)
 target_link_libraries(p2_1 gtest_main)
 gtest_discover_tests(p2_1)
+
+add_executable(2.4.1c ch02/sec2.4/src/2.4.1c.cpp)
+target_link_libraries(2.4.1c gtest_main)
+gtest_discover_tests(2.4.1c)

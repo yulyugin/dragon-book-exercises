@@ -13,4 +13,4 @@ See [2.4.1b.cpp](./src/2.4.1b.cpp) for mplementation in C++.
 
 c) `S -> 0 S 1 | 0 1`
 
-See [2.4.1b.cpp](./src/2.4.1b.cpp) for mplementation in C++.
+See [2.4.1c.cpp](./src/2.4.1c.cpp) for mplementation in C++.

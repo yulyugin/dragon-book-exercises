@@ -113,4 +113,17 @@ public class LexerTest {
         Num numToken = (Num)token;
         assertEquals(num, numToken.value);
     }
+
+    @Test
+    public void scanNewLine() throws IOException {
+        Lexer lexer = new Lexer();
+        String id = "newLineID";
+        String input = "\n" + id;
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Token token = lexer.scan();
+        assertEquals(2, lexer.line);
+        assertEquals(Tag.ID, token.tag);
+        Word wordToken = (Word)token;
+        assertEquals(id, wordToken.lexeme);
+    }
 }

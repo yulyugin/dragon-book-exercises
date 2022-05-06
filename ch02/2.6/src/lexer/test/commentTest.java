@@ -55,4 +55,44 @@ public class commentTest {
         assertEquals(1, lexer.line);
         assertNotEquals(Tag.ID, token.tag);
     }
+
+    @Test
+    public void testEmptyComment() throws IOException {
+        final String emptyComment = "/**/";
+        final String id = "newID";
+        final String input = emptyComment + id;
+        System.setIn(new ByteArrayInputStream(
+                        input.getBytes()));
+        Lexer lexer = new Lexer();
+        Token token = lexer.scan();
+        assertEquals(lexer.line, 1);
+        assertEquals(Tag.ID, token.tag);
+    }
+
+    @Test
+    public void testMultilineComment() throws IOException {
+        final String longComment = "/* Long\ncomment*/";
+        final String id = "anotherID";
+        final String input = longComment + id;
+        System.setIn(new ByteArrayInputStream(
+                        input.getBytes()));
+        Lexer lexer = new Lexer();
+        Token token = lexer.scan();
+        assertEquals(lexer.line, 2);
+        assertEquals(Tag.ID, token.tag);
+    }
+
+    @Test
+    public void testTwoMultilineComments() throws IOException {
+        final String firstComment = "/* First comment */";
+        final String secondComment = "/* Second comment */";
+        final String id = "anotherID";
+        final String input = firstComment + secondComment + id;
+        System.setIn(new ByteArrayInputStream(
+                        input.getBytes()));
+        Lexer lexer = new Lexer();
+        Token token = lexer.scan();
+        assertEquals(lexer.line, 1);
+        assertEquals(Tag.ID, token.tag);
+    }
 }

@@ -13,7 +13,7 @@ import lexer.Word;
 import lexer.Token;
 import lexer.Tag;
 
-public class commentTest {
+public class CommentTest {
     @Test
     public void testSingleLineComment() throws IOException {
         final String id = "someId";

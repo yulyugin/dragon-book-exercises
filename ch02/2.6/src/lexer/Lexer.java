@@ -36,8 +36,25 @@ public class Lexer {
         reserve( new Word(Tag.FALSE, "false") );
     }
 
+    private boolean possiblyRemoveComment() throws IOException {
+        char nextSymbol = input.read();
+        if ( nextSymbol == '/' ) {
+            do {
+                peek = input.read();
+            } while(peek != '\n');
+            return true;
+        } else {
+            input.unread(nextSymbol);
+            return false;
+        }
+    }
+
     public Token scan() throws IOException {
         for( ; ; peek = input.read() ) {
+            if ( peek == '/' ) {
+                possiblyRemoveComment();
+            }
+
             if( peek == ' ' || peek == '\t' )
                 continue;
             else if( peek == '\n' )

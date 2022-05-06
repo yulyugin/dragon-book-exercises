@@ -1,7 +1,7 @@
 package lexer.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import lexer.Word;
 import lexer.Token;
 import lexer.Tag;
 
-public class SingleLineCommentTest {
+public class commentTest {
     @Test
     public void testSingleLineComment() throws IOException {
         final String id = "someId";

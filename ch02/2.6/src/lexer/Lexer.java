@@ -3,22 +3,41 @@ package lexer;
 import java.io.*;
 import java.util.*;
 
+class InputBuffer {
+    private PushbackInputStream input;
+
+    public InputBuffer(InputStream in) {
+        input = new PushbackInputStream(in);
+    }
+
+    public char read() throws IOException {
+        if (input.available() == 0)
+            input = new PushbackInputStream(System.in);
+        return (char)input.read();
+    }
+
+    public void unread(char symbol) throws IOException {
+        input.unread(symbol);
+    }
+}
+
 public class Lexer {
     public int line = 1;
     private char peek = ' ';
+    InputBuffer input = new InputBuffer(System.in);
     private Hashtable words = new Hashtable();
     
     void reserve(Word t) {
         words.put(t.lexeme, t);
     }
-    
+
     public Lexer() {
         reserve( new Word(Tag.TRUE, "true") );
         reserve( new Word(Tag.FALSE, "false") );
     }
 
     public Token scan() throws IOException {
-        for( ; ; peek = (char)System.in.read() ) {
+        for( ; ; peek = input.read() ) {
             if( peek == ' ' || peek == '\t' )
                 continue;
             else if( peek == '\n' )
@@ -31,7 +50,7 @@ public class Lexer {
             int v = 0;
             do {
                 v = 10*v + Character.digit(peek, 10);
-                peek = (char)System.in.read();
+                peek = input.read();
             } while( Character.isDigit(peek) );
 
             return new Num(v);
@@ -42,7 +61,7 @@ public class Lexer {
 
             do {
                 b.append(peek);
-                peek = (char)System.in.read();
+                peek = input.read();
             } while( Character.isLetterOrDigit(peek) );
 
             String s = b.toString();

@@ -64,6 +64,34 @@ public class Lexer {
         }
     }
 
+    private int parseNumber() throws IOException {
+        int n = 0;
+        while (Character.isDigit(peek)) {
+            n = 10 * n + Character.digit(peek, 10);
+            peek = input.read();
+        }
+        return n;
+    }
+
+    private boolean possbileNumber() {
+        return Character.isDigit(peek) || peek == '.';
+    }
+
+    private Token scanNumbers() throws IOException {
+        if (!possbileNumber())
+            return null;
+
+        int whole = parseNumber();
+
+        if (peek == '.') {
+            peek = input.read();
+            int fraction = parseNumber();
+            return new Floating(whole, fraction);
+        }
+
+        return new Num(whole);
+    }
+
     public Token scan() throws IOException {
         for( ; ; peek = input.read() ) {
             if (removeComment())
@@ -74,16 +102,6 @@ public class Lexer {
                 line = line + 1;
             else
                 break;
-        }
-
-        if( Character.isDigit(peek) ) {
-            int v = 0;
-            do {
-                v = 10*v + Character.digit(peek, 10);
-                peek = input.read();
-            } while( Character.isDigit(peek) );
-
-            return new Num(v);
         }
 
         if( Character.isLetter(peek) ) {
@@ -108,6 +126,10 @@ public class Lexer {
         Token t = scanRelationOperators();
         if (t != null)
             return scanSuccessful(t);
+
+        t = scanNumbers();
+        if (t != null)
+            return t;
 
         return scanSuccessful(new Token(peek));
     }

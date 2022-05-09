@@ -24,7 +24,7 @@ class InputBuffer {
 public class Lexer {
     public int line = 1;
     private char peek = ' ';
-    InputBuffer input = new InputBuffer(System.in);
+    private InputBuffer input = new InputBuffer(System.in);
     private Hashtable words = new Hashtable();
     
     void reserve(Word t) {

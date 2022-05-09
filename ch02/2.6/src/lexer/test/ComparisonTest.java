@@ -1,6 +1,8 @@
 package lexer.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -57,5 +59,13 @@ public class ComparisonTest {
         Lexer lexer = new Lexer();
         Token token = lexer.scan();
         assertEquals(Tag.NOT_EQUAL, token.tag);
+    }
+
+    @Test
+    public void testMisformedEqual() throws IOException {
+        System.setIn(new ByteArrayInputStream("=a".getBytes()));
+        Lexer lexer = new Lexer();
+        Token token = lexer.scan();
+        assertNotEquals(Tag.EQUAL, token.tag);
     }
 }

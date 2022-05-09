@@ -106,8 +106,51 @@ public class Lexer {
             return w;
         }
 
-        Token t = new Token(peek);
+        Token t = scanRelationOperators();
+        if (t != null)
+            return scanSuccessful(t);
+
+        return scanSuccessful(new Token(peek));
+    }
+
+    private Token scanSuccessful(Token t) {
         peek = ' ';
         return t;
+    }
+
+    private Token scanRelationOperators() throws IOException {
+        if ( "<!=>".indexOf(peek) != -1 ) {
+            String s = Character.toString(peek);
+            char nextSymbol = input.read();
+
+            if ( nextSymbol == '=' )
+                s += nextSymbol;
+            else
+                input.unread(nextSymbol);
+
+            int tag = relationStringToTag(s);
+            if (tag != -1)
+                return new Token(tag);
+        }
+
+        return null;
+    }
+
+    private int relationStringToTag(String s) {
+        switch (s) {
+        case ">":
+            return Tag.GREATER;
+        case "<":
+            return Tag.LESS;
+        case ">=":
+            return Tag.GREATER_OR_EQUAL;
+        case "<=":
+            return Tag.LESS_OR_EQUAL;
+        case "==":
+            return Tag.EQUAL;
+        case "!=":
+            return Tag.NOT_EQUAL;
+        }
+        return -1;
     }
 }

@@ -55,7 +55,6 @@ public class Lexer {
                 } while ( peek != '*');
                 peek = input.read();
                 if (peek == '/') {
-                    //peek = input.read();
                     return true;
                 }
             }

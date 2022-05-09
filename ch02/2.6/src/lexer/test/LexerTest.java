@@ -23,7 +23,7 @@ public class LexerTest {
         Token token = lexer.scan();
         assertEquals(Tag.NUM, token.tag);
         Num numToken = (Num)token;
-        assertEquals(numToken.value, v);
+        assertEquals(v, numToken.value);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class LexerTest {
         Token token = lexer.scan();
         assertEquals(Tag.NUM, token.tag);
         Num numToken = (Num)token;
-        assertEquals(numToken.value, v);
+        assertEquals(v, numToken.value);
     }
 
     @Test

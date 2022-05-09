@@ -92,7 +92,54 @@ public class Lexer {
         return new Num(whole);
     }
 
+    private Token scanID() throws IOException {
+        if(!Character.isLetter(peek))
+            return null;
+
+        StringBuffer b = new StringBuffer();
+        do {
+            b.append(peek);
+            peek = input.read();
+        } while( Character.isLetterOrDigit(peek) );
+
+        String s = b.toString();
+
+        Word w = (Word)words.get(s);
+        if( w != null )
+            return w;
+
+        w = new Word(Tag.ID, s);
+        words.put(s, w);
+        return w;
+    }
+
     public Token scan() throws IOException {
+        skipBlanksAndComments();
+
+        Token t = scanRelationOperators();
+        if (t != null) {
+            resetPeek();
+            return t;
+        }
+
+        t = scanNumbers();
+        if (t != null)
+            return t;
+
+        t = scanID();
+        if (t != null)
+            return t;
+
+        t = new Token(peek);
+        resetPeek();
+        return t;
+    }
+
+    private void resetPeek() {
+        peek = ' ';
+    }
+
+    private void skipBlanksAndComments() throws IOException {
         for( ; ; peek = input.read() ) {
             if (removeComment())
                 continue;
@@ -103,40 +150,6 @@ public class Lexer {
             else
                 break;
         }
-
-        if( Character.isLetter(peek) ) {
-            StringBuffer b = new StringBuffer();
-
-            do {
-                b.append(peek);
-                peek = input.read();
-            } while( Character.isLetterOrDigit(peek) );
-
-            String s = b.toString();
-
-            Word w = (Word)words.get(s);
-            if( w != null )
-                return w;
-
-            w = new Word(Tag.ID, s);
-            words.put(s, w);
-            return w;
-        }
-
-        Token t = scanRelationOperators();
-        if (t != null)
-            return scanSuccessful(t);
-
-        t = scanNumbers();
-        if (t != null)
-            return t;
-
-        return scanSuccessful(new Token(peek));
-    }
-
-    private Token scanSuccessful(Token t) {
-        peek = ' ';
-        return t;
     }
 
     private Token scanRelationOperators() throws IOException {

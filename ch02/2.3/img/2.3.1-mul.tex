@@ -4,38 +4,34 @@
 \begin{tikzpicture}
   \node (e) at (0, 0) {expr.t = -9*52};
 
-  \node (e9) at (-4, -1) {expr.t = 9};
-  \node (-) at (0, -1) {-};
-  \node (t52) at (4, -1) {term.t = *52};
-  \draw (e) -- (e9);
-  \draw (e) -- (-);
-  \draw (e) -- (t52);
+    \node (e9) at ($(e) + (-2, -1)) {expr.t = 9};
+    \draw (e) -- (e9);
+    \node (t9) at ($(e9) + (0, -1)) {term.t = 9};
+    \draw (e9) -- (t9);
+    \node (f9) at ($(t9) + (0, -1)) {factor.t = 9};
+    \draw (t9) -- (f9);
+    \node (9) at ($(f9) + (0, -1)) {9};
+    \draw (f9) -- (9);
 
-  \node (t9) at (-4, -2) {term.t = 9};
-  \draw (e9) -- (t9);
+    \node (-) at ($(e) + (0, -1)) {-};
+    \draw (e) -- (-);
 
-  \node (t5) at (2, -2) {term.t = 5};
-  \draw (t52) -- (t5);
+    \node (t52) at ($(e) + (2.5, -1)) {term.t = *52};
+    \draw (e) -- (t52);
 
-  \node (*) at (4, -2) {*};
-  \draw (t52) -- (*);
+      \node (t5) at ($(t52) + (-1.5, -1)) {term.t = 5};
+      \draw (t52) -- (t5);
+      \node (f5) at ($(t5) + (0, -1)) {factor.t = 5};
+      \draw (t5) -- (f5);
+      \node (5) at ($(f5) + (0, -1)) {5};
+      \draw (f5) -- (5);
 
-  \node (f2) at (6, -2) {factor.t = 2};
-  \draw (t52) -- (f2);
+      \node (*) at ($(t52) + (0, -1)) {*};
+      \draw (t52) -- (*);
 
-  \node (f9) at (-4, -3) {factor.t = 9};
-  \draw (t9) -- (f9);
-
-  \node (f5) at (2, -3) {factor.t = 5};
-  \draw (t5) -- (f5);
-
-  \node (2) at (6, -3) {2};
-  \draw (f2) -- (2);
-
-  \node (9) at (-4, -4) {9};
-  \draw (f9) -- (9);
-
-  \node (5) at (2, -4) {5};
-  \draw (f5) -- (5);
+      \node (f2) at ($(t52) + (1.5, -1)) {factor.t = 2};
+      \draw (t52) -- (f2);
+      \node (2) at ($(f2) + (0, -1)) {2};
+      \draw (f2) -- (2);
 \end{tikzpicture}
 \end{document}

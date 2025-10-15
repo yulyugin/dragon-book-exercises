@@ -1,30 +1,44 @@
 \documentclass[varwidth=true]{standalone}
 \usepackage{tikz}
 \begin{document}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}
   \node (e) at (0, 0) {expr.t = (9-5)*2};
 
-  \node (e95) at (-4, -1) {expr.t = (9-5)};
-  \node (e2) at (0, -1) {expr.t = 2};
-  \node (*) at (4, -1) {*};
-  \draw (e) -- (e95);
-  \draw (e) -- (e2);
-  \draw (e) -- (*);
+	\node (t) at ($(e) + (0, -1)) {term.t = (9-5)*2};
+  \draw (e) -- (t);
 
-  \node (e9) at (-7, -2) {expr.t = 9};
-  \node (e5) at (-4, -2) {expr.t = 5};
-  \node (-) at (-1, -2) {-};
-  \draw (e95) -- (e9);
-  \draw (e95) -- (e5);
-  \draw (e95) -- (-);
+    \node (t95) at ($(t) + (-3, -1)) {term.t = (9-5)};
+    \draw (t) -- (t95);
+    \node (f95) at ($(t95) + (0, -1)) {factor.t = (9-5)};
+    \draw (t95) -- (f95);
+    \node (e95) at ($(f95) + (0, -1)) {expr.t = 9-5};
+    \draw (f95) -- (e95);
 
-  \node (2) at (0, -2) {2};
-  \draw (e2) -- (2);
+      \node (e9) at ($(e95) + (-2, -1)) {expt.t = 9};
+      \draw (e95) -- (e9);
+      \node (t9) at ($(e9) + (0, -1)) {term.t = 9};
+      \draw (e9) -- (t9);
+      \node (f9) at ($(t9) + (0, -1)) {factor.9 = 9};
+      \draw (t9) -- (f9);
+      \node (9) at ($(f9) + (0, -1)) {9};
+      \draw (f9) -- (9);
 
-  \node (9) at (-7, -3) {9};
-  \draw (e9) -- (9);
+      \node (t5) at ($(e95) + (0, -1)) {term.t = 5};
+      \draw (e95) -- (t5);
+      \node (f5) at ($(t5) + (0, -1)) {factor.t = 5};
+      \draw (t5) -- (f5);
+      \node (5) at ($(f5) + (0, -1)) {5};
+      \draw (f5) -- (5);
 
-  \node (5) at (-4, -3) {5};
-  \draw (e5) -- (5);
+      \node (-) at ($(e95) + (2, -1)) {-};
+      \draw (e95) -- (-);
+
+    \node (f2) at ($(t) + (0, -1)) {factor.t = 2};
+    \draw (t) -- (f2);
+    \node (2) at ($(f2) + (0, -1)) {2};
+    \draw (f2) -- (2);
+
+    \node (*) at ($(t) + (2, -1)) {*};
+    \draw (t) -- (*);
 \end{tikzpicture}
 \end{document}

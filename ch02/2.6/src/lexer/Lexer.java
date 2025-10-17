@@ -26,7 +26,7 @@ public class Lexer {
     private char peek = ' ';
     private InputBuffer input = new InputBuffer(System.in);
     private Hashtable words = new Hashtable();
-    
+
     void reserve(Word t) {
         words.put(t.lexeme, t);
     }
@@ -73,12 +73,12 @@ public class Lexer {
         return n;
     }
 
-    private boolean possbileNumber() {
+    private boolean possibleNumber() {
         return Character.isDigit(peek) || peek == '.';
     }
 
     private Token scanNumbers() throws IOException {
-        if (!possbileNumber())
+        if (!possibleNumber())
             return null;
 
         int whole = parseNumber();

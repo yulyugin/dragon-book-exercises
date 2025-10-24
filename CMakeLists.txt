@@ -18,13 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.14)
+
+# GoogleTest requires at least C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG        e2239ee6043f73722e7aa812a459f54a28552929 # release-1.11.0
+  URL https://github.com/google/googletest/archive/refs/tags/v1.17.0.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 FetchContent_MakeAvailable(googletest)
 

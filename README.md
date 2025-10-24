@@ -5,3 +5,7 @@ Exercise answers (keys) for "Compilers: Principles, Techniques and Tools, Second
 * [Chapter 1. Introduction](./ch01/ch01.md)
 * [Chapter 2. A Simple One-Pass Compiler](./ch02/ch02.md)
 * [Chapter 3. Lexical Analysis](./ch03/ch03.md)
+
+## Dependencies
+
+* cmake

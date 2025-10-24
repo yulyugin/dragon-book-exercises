@@ -47,7 +47,7 @@ public class Lexer {
     public int line = 1;
     private char peek = ' ';
     private InputBuffer input = new InputBuffer(System.in);
-    private Hashtable words = new Hashtable();
+    private Hashtable<String, Token> words = new Hashtable<String, Token>();
 
     void reserve(Word t) {
         words.put(t.lexeme, t);

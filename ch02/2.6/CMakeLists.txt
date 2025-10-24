@@ -20,7 +20,7 @@
 
 set(JUNIT_VERSION "6.0.0")
 set(JUNIT "junit-platform-console-standalone-${JUNIT_VERSION}.jar")
-set(JUNIT_JAR ${CMAKE_BINARY_DIR}/${JUNIT})
+set(JUNIT_JAR ${CMAKE_BINARY_DIR}/lib/${JUNIT})
 set(JUNIT_URL "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/${JUNIT_VERSION}/${JUNIT}")
 file(DOWNLOAD ${JUNIT_URL} ${JUNIT_JAR})
 

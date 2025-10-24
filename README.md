@@ -9,3 +9,4 @@ Exercise answers (keys) for "Compilers: Principles, Techniques and Tools, Second
 ## Dependencies
 
 * cmake
+* java

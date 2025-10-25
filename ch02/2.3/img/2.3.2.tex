@@ -1,44 +1,34 @@
-\documentclass[varwidth=true]{standalone}
+\documentclass[tikz]{standalone}
 \usepackage{tikz}
 \begin{document}
-\begin{tikzpicture}
-  \node (e) at (0, 0) {expr.t = (9-5)*2};
-
-	\node (t) at ($(e) + (0, -1)) {term.t = (9-5)*2};
-  \draw (e) -- (t);
-
-    \node (t95) at ($(t) + (-3, -1)) {term.t = (9-5)};
-    \draw (t) -- (t95);
-    \node (f95) at ($(t95) + (0, -1)) {factor.t = (9-5)};
-    \draw (t95) -- (f95);
-    \node (e95) at ($(f95) + (0, -1)) {expr.t = 9-5};
-    \draw (f95) -- (e95);
-
-      \node (e9) at ($(e95) + (-2, -1)) {expt.t = 9};
-      \draw (e95) -- (e9);
-      \node (t9) at ($(e9) + (0, -1)) {term.t = 9};
-      \draw (e9) -- (t9);
-      \node (f9) at ($(t9) + (0, -1)) {factor.9 = 9};
-      \draw (t9) -- (f9);
-      \node (9) at ($(f9) + (0, -1)) {9};
-      \draw (f9) -- (9);
-
-      \node (t5) at ($(e95) + (0, -1)) {term.t = 5};
-      \draw (e95) -- (t5);
-      \node (f5) at ($(t5) + (0, -1)) {factor.t = 5};
-      \draw (t5) -- (f5);
-      \node (5) at ($(f5) + (0, -1)) {5};
-      \draw (f5) -- (5);
-
-      \node (-) at ($(e95) + (2, -1)) {-};
-      \draw (e95) -- (-);
-
-    \node (f2) at ($(t) + (0, -1)) {factor.t = 2};
-    \draw (t) -- (f2);
-    \node (2) at ($(f2) + (0, -1)) {2};
-    \draw (f2) -- (2);
-
-    \node (*) at ($(t) + (2, -1)) {*};
-    \draw (t) -- (*);
+\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=30mm},
+                    level 3/.style={level distance=8mm, sibling distance=20mm}]
+  \node {expr.t = (9-5)*2}
+    child { node {term.t = (9-5)*2}
+      child { node {term.t = (9-5)}
+        child { node {factor.t = (9-5)}
+          child { node {expr.t = 9-5}
+            child { node {expr.t = 9}
+              child { node {term.t = 9}
+                child { node {factor.t = 9}
+                  child { node {9} }
+                }
+              }
+            }
+            child { node {term.t = 5}
+              child { node {factor.t = 5}
+                child { node {5} }
+              }
+            }
+            child { node {-} }
+          }
+        }
+      }
+      child { node {factor.t = 2}
+        child { node {2} }
+      }
+      child { node {*} }
+    }
+  ;
 \end{tikzpicture}
 \end{document}

@@ -1,37 +1,27 @@
-\documentclass[varwidth=true]{standalone}
-\usepackage{tikz}
+\documentclass[tikz]{standalone}
 \begin{document}
-\begin{tikzpicture}
-  \node (e) at (0, 0) {expr.t = 9-5*2};
-
-    \node (e9) at ($(e) + (-4.5, -1)) {expt.t = 9};
-    \draw (e) -- (e9);
-    \node (t9) at ($(e9) + (0, -1)) {term.t = 9};
-    \draw (e9) -- (t9);
-    \node (f9) at ($(t9) + (0, -1)) {factor.t = 9};
-    \draw (t9) -- (f9);
-    \node (9) at ($(f9) + (0, -1)) {9};
-    \draw (f9) -- (9);
-
-    \node (t52) at ($(e) + (0, -1)) {term.t = 5*2};
-    \draw (e) -- (t52);
-
-      \node (t5) at ($(t52) + (-2, -1)) {term.t = 5};
-      \draw (t52) -- (t5);
-      \node (f5) at ($(t5) + (0, -1)) {factor.t = 5};
-      \draw (t5) -- (f5);
-      \node (5) at ($(f5) + (0, -1)) {5};
-      \draw (f5) -- (5);
-
-      \node (f2) at ($(t52) + (0, -1)) {factor.t = 2};
-      \draw (t52) -- (f2);
-      \node (2) at ($(f2) + (0, -1)) {2};
-      \draw (f2) -- (2);
-
-      \node (*) at ($(t52) + (2, -1)) {*};
-      \draw (t52) -- (*);
-
-    \node (-) at ($(e) + (2.5, -1)) {-};
-    \draw (e) -- (-);
+\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=40mm},
+                    level 2/.style={level distance=8mm, sibling distance=20mm}]
+  \node {expr.t = 9-5*2}
+    child { node {expr.t = 9}
+      child { node {term.t = 9}
+        child { node {factor.t = 9}
+          child { node {9} }
+        }
+      }
+    }
+    child { node {term.t = 5*2}
+      child { node {term.t = 5}
+        child { node {factor.t = 5}
+          child { node {5} }
+        }
+      }
+      child { node {factor.t = 2}
+        child { node {2} }
+      }
+      child { node {*} }
+    }
+    child { node {-} }
+  ;
 \end{tikzpicture}
 \end{document}

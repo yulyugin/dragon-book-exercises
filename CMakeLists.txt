@@ -36,6 +36,7 @@ project(dragon-book-exercises)
 
 enable_testing()
 include(GoogleTest)
+include(cmake/tex.cmake)
 
 add_executable(p2_1 ch02/P2.1/p2_1.cpp)
 target_link_libraries(p2_1 gtest_main)

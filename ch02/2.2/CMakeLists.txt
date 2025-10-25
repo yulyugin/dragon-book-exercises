@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-add_subdirectory(2.2)
-add_subdirectory(2.4)
-add_subdirectory(2.6)
+build_tex_image(${CMAKE_CURRENT_SOURCE_DIR}/img/2.2.1.b.tex)
+build_tex_image(${CMAKE_CURRENT_SOURCE_DIR}/img/2.2.3.c.tex)
+build_tex_image(${CMAKE_CURRENT_SOURCE_DIR}/img/2.2.3.d.tex)
+build_tex_image(${CMAKE_CURRENT_SOURCE_DIR}/img/2.2.3.e.tex)

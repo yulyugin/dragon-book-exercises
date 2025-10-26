@@ -23,7 +23,7 @@ option(BUILD_IMAGES "Build TeX images" OFF)
 
 if(BUILD_IMAGES)
     find_package(LATEX COMPONENTS PDFLATEX)
-    find_program(PDF2SVG pdf2svg REQUIRED)
+    find_program(PDFTOPPM pdftoppm REQUIRED)
     set(IMG_DIR ${CMAKE_BINARY_DIR}/img)
 
     if(NOT LATEX_FOUND)
@@ -37,9 +37,10 @@ if(BUILD_IMAGES)
             COMMAND_ERROR_IS_FATAL ANY
         )
         get_filename_component(TEX_NAME ${TEX_FILE} NAME_WLE)
-        string(REGEX REPLACE "[.]tex$" ".svg" SVG_FILE ${TEX_FILE})
+        string(REGEX REPLACE "[.]tex$" ".png" PNG_FILE ${TEX_FILE})
         execute_process(
-            COMMAND ${PDF2SVG} "${IMG_DIR}/${TEX_NAME}.pdf" "${SVG_FILE}"
+            COMMAND ${PDFTOPPM} -png ${IMG_DIR}/${TEX_NAME}.pdf -r 300
+            OUTPUT_FILE ${PNG_FILE}
             COMMAND_ERROR_IS_FATAL ANY
         )
     endfunction()

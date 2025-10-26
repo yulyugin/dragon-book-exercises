@@ -1,80 +1,58 @@
 \documentclass[varwidth=true]{standalone}
 \usepackage{tikz}
 \begin{document}
-\begin{tikzpicture}
-    \node (S0) at (0, 0) {S};
-
-    \node (S1) at (-2, -1) {S};
-    \draw (S0) -- (S1);
-    \node (b0) at (-1, -1) {(};
-    \draw (S0) -- (b0);
-    \node (S2) at (0, -1) {S};
-    \draw (S0) -- (S2);
-    \node (b1) at (1, -1) {)};
-    \draw (S0) -- (b1);
-    \node (S3) at (4, -1) {S};
-    \draw (S0) -- (S3);
-
-    \node (e1) at (-2, -2) {$\epsilon$};
-    \draw (S1) -- (e1);
-    \node (e2) at (0, -2) {$\epsilon$};
-    \draw (S2) -- (e2);
-
-    \node (S10) at (2, -2) {S};
-    \draw (S3) -- (S10);
-    \node (b10) at (3, -2) {(};
-    \draw (S3) -- (b10);
-    \node (S11) at (4, -2) {S};
-    \draw (S3) -- (S11);
-    \node (b11) at (5, -2) {)};
-    \draw (S3) -- (b11);
-    \node (S12) at (6, -2) {S};
-    \draw (S3) -- (S12);
-
-    \node (e10) at (2, -3) {$\epsilon$};
-    \draw (S10) -- (e10);
-    \node (e11) at (4, -3) {$\epsilon$};
-    \draw (S11) -- (e11);
-    \node (e12) at (6, -3) {$\epsilon$};
-    \draw (S12) -- (e12);
+\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=15mm},
+                    level 2/.style={level distance=8mm, sibling distance=10mm}]
+  \node {S}
+    child { node {S}
+      child { node {$\epsilon$} }
+    }
+    child { node {(} }
+    child { node {S}
+      child { node {$\epsilon$} }
+    }
+    child { node {)} }
+    child { node {S}
+      child { node {S}
+      child { node {$\epsilon$} }
+      }
+      child { node {(} }
+      child { node {S}
+      child { node {$\epsilon$} }
+      }
+      child { node {)} }
+      child { node {S}
+        child { node {$\epsilon$} }
+      }
+    }
+  ;
 \end{tikzpicture}
 \newline
 \newline
-\begin{tikzpicture}
-    \node (S0) at (0, 0) {S};
-
-    \node (S1) at (-4, -1) {S};
-    \draw (S0) -- (S1);
-    \node (b0) at (-1, -1) {(};
-    \draw (S0) -- (b0);
-    \node (S2) at (0, -1) {S};
-    \draw (S0) -- (S2);
-    \node (b1) at (1, -1) {)};
-    \draw (S0) -- (b1);
-    \node (S3) at (2, -1) {S};
-    \draw (S0) -- (S3);
-
-    \node (e2) at (0, -2) {$\epsilon$};
-    \draw (S2) -- (e2);
-    \node (e3) at (2, -2) {$\epsilon$};
-    \draw (S3) -- (e3);
-
-    \node (S10) at (-6, -2) {S};
-    \draw (S1) -- (S10);
-    \node (b10) at (-5, -2) {(};
-    \draw (S1) -- (b10);
-    \node (S11) at (-4, -2) {S};
-    \draw (S1) -- (S11);
-    \node (b11) at (-3, -2) {)};
-    \draw (S1) -- (b11);
-    \node (S12) at (-2, -2) {S};
-    \draw (S1) -- (S12);
-
-    \node (e10) at (-6, -3) {$\epsilon$};
-    \draw (S10) -- (e10);
-    \node (e11) at (-4, -3) {$\epsilon$};
-    \draw (S11) -- (e11);
-    \node (e12) at (-2, -3) {$\epsilon$};
-    \draw (S12) -- (e12);
+\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=15mm},
+                    level 2/.style={level distance=8mm, sibling distance=10mm}]
+  \node {S}
+    child { node {S}
+      child { node {S}
+      child { node {$\epsilon$} }
+      }
+      child { node {(} }
+      child { node {S}
+      child { node {$\epsilon$} }
+      }
+      child { node {)} }
+      child { node {S}
+        child { node {$\epsilon$} }
+      }
+    }
+    child { node {(} }
+    child { node {S}
+      child { node {$\epsilon$} }
+    }
+    child { node {)} }
+    child { node {S}
+      child { node {$\epsilon$} }
+    }
+  ;
 \end{tikzpicture}
 \end{document}

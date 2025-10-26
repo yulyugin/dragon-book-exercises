@@ -11,4 +11,4 @@ Exercise answers (keys) for "Compilers: Principles, Techniques and Tools, Second
 * cmake
 * java
 * pdflatex (image generation)
-* pdf2svg (image generation)
+* pdftoppm (image generation)

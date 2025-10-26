@@ -1,6 +1,7 @@
 \documentclass[tikz]{standalone}
 \begin{document}
-\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=20mm}]
+\begin{tikzpicture}[level 1/.style={level distance=8mm, sibling distance=25mm},
+                    level 2/.style={level distance=8mm, sibling distance=15mm}]
   \node {expr.t = -9*52}
     child { node {expr.t = 9}
       child {node {term.t = 9}

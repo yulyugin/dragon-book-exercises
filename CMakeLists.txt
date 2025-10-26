@@ -38,8 +38,4 @@ enable_testing()
 include(GoogleTest)
 include(cmake/tex.cmake)
 
-add_executable(p2_1 ch02/P2.1/p2_1.cpp)
-target_link_libraries(p2_1 gtest_main)
-gtest_discover_tests(p2_1)
-
 add_subdirectory(ch02)
